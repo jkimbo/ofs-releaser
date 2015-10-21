@@ -76,6 +76,14 @@ Promise.all(prNumbers.map(getPR)).then((prs) => {
   }).join("\n");
   console.log("Release notes:\n");
   console.log(prNotes);
+
+  console.log("\n");
+  console.log("Branches:\n");
+
+  const branches = prs.map((pr) => {
+    return pr.head.ref;
+  }).join(" ");
+  console.log(branches);
 }).catch((error) => {
   throw error;
 });
