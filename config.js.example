@@ -1,0 +1,3 @@
+export const GITHUB_TOKEN = '';
+export const GITHUB_USER = 'lifealike';
+export const GITHUB_REPO = 'onefinestay';
