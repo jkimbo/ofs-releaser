@@ -2,9 +2,9 @@
   "name": "releaser",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "dist/releaser.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "build": "babel src --out-dir dist"
   },
   "author": "",
   "license": "ISC",
@@ -12,5 +12,8 @@
     "commander": "^2.9.0",
     "github": "^0.2.4",
     "lie": "^3.0.1"
+  },
+  "devDependencies": {
+    "babel": "^5.8.29"
   }
 }

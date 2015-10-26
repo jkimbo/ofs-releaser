@@ -1,4 +1,3 @@
-#!/usr/bin/env babel-node
 /* eslint-disable no-console, no-process-exit */
 import program from 'commander';
 
