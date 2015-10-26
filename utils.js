@@ -32,3 +32,7 @@ export function excecuteSerial(functions) {
     return cur.then(next);
   }, Promise.resolve());
 }
+
+export function formatPR(pr) {
+  return `${pr.html_url} - ${pr.title}`;
+}
