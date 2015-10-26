@@ -4,7 +4,7 @@
   "description": "Create releases the ofs way",
   "main": "dist/releaser.js",
   "preferGlobal": true,
-  "bin" : { "releaser" : "./dist/releaser.js" }
+  "bin" : { "releaser" : "./dist/releaser.js" },
   "scripts": {
     "build": "babel src --out-dir dist"
   },
