@@ -44,6 +44,17 @@ export function getPullRequests(user, project) {
   return deferred.promise;
 }
 
+export function getPullRequest(user, project, number) {
+  const deferred = defer();
+
+  github.pullRequests.get({
+    user: user,
+    repo: project,
+    number,
+  }, cbToPromise(deferred));
+  return deferred.promise;
+}
+
 export function getIssueLabels(user, project, issue) {
   const deferred = defer();
 
@@ -89,4 +100,21 @@ export function getReadyPRs(user, project, readyLabel = 'ready') {
       }, []);
       return Promise.resolve(readyPrs);
     });
+}
+
+export function createPullRequest(user, project, options, dry = false) {
+  const deferred = defer();
+
+  if (dry) {
+    return Promise.resolve({
+      'html_url': '<GITHUB_PULL_REQUEST_URL>',
+    });
+  }
+
+  github.pullRequests.create(Object.assign({
+    'user': user,
+    'repo': project,
+  }, options), cbToPromise(deferred));
+
+  return deferred.promise;
 }
