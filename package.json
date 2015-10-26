@@ -1,13 +1,15 @@
 {
-  "name": "releaser",
+  "name": "ofs-releaser",
   "version": "1.0.0",
-  "description": "",
+  "description": "Create releases the ofs way",
   "main": "dist/releaser.js",
+  "preferGlobal": true,
+  "bin" : { "releaser" : "./dist/releaser.js" }
   "scripts": {
     "build": "babel src --out-dir dist"
   },
-  "author": "",
-  "license": "ISC",
+  "author": "Jonathan Kim <jonathan.kim@onefinestay.com>",
+  "license": "Apache 2.0",
   "dependencies": {
     "commander": "^2.9.0",
     "github": "^0.2.4",
