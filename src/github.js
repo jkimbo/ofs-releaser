@@ -2,11 +2,10 @@ import GitHubApi from "github";
 
 import {
   defer,
+  getGithubToken,
 } from './utils';
 
-import {
-  GITHUB_TOKEN,
-} from './config';
+const GITHUB_TOKEN = getGithubToken();
 
 const github = new GitHubApi({
   // required

@@ -2,6 +2,16 @@
 import { exec } from 'child_process';
 import Promise from 'lie';
 
+export function getGithubToken() {
+  const token = process.env.GITHUB_TOKEN;
+  console.log(process.env);
+
+  if (!token) {
+    throw new Error('Env variable GITHUB_TOKEN is not set');
+  }
+  return token;
+}
+
 export function defer() {
   const deferred = {};
   const promise = new Promise((resolve, reject) => {
