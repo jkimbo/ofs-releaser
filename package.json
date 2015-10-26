@@ -9,7 +9,6 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "command-line-args": "^2.0.2",
     "commander": "^2.9.0",
     "github": "^0.2.4",
     "lie": "^3.0.1"
