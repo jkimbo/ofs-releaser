@@ -1,6 +1,6 @@
-"use strict";
+'use strict';
 
-Object.defineProperty(exports, "__esModule", {
+Object.defineProperty(exports, '__esModule', {
   value: true
 });
 exports.getPullRequests = getPullRequests;
@@ -9,17 +9,21 @@ exports.getIssueLabels = getIssueLabels;
 exports.getReadyPRs = getReadyPRs;
 exports.createPullRequest = createPullRequest;
 
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
 
 var _github = require("github");
 
 var _github2 = _interopRequireDefault(_github);
 
+var _lie = require('lie');
+
+var _lie2 = _interopRequireDefault(_lie);
+
 var _utils = require('./utils');
 
 var GITHUB_TOKEN = (0, _utils.getGithubToken)();
 
-var github = new _github2["default"]({
+var github = new _github2['default']({
   // required
   version: "3.0.0"
 });
@@ -29,7 +33,7 @@ github.authenticate({
   token: GITHUB_TOKEN
 });
 
-exports["default"] = github;
+exports['default'] = github;
 
 function cbToPromise(promise) {
   return function (error, data) {
@@ -85,13 +89,13 @@ function getReadyPRs(user, project) {
     var deferred = (0, _utils.defer)();
 
     // get PR labels
-    Promise.all(prs.map(function (_ref) {
+    _lie2['default'].all(prs.map(function (_ref) {
       var number = _ref.number;
       return getIssueLabels(user, project, number);
     })).then(function (labels) {
       // zip up pull requests
       if (labels.length !== prs.length) {
-        throw Error("Length of labels doesn't match length of prs");
+        throw Error('Length of labels doesn\'t match length of prs');
       }
 
       var _prs = prs.reduce(function (memo, pr, index) {
@@ -100,7 +104,7 @@ function getReadyPRs(user, project) {
         return memo;
       }, []);
       deferred.resolve(_prs);
-    })["catch"](function (error) {
+    })['catch'](function (error) {
       return deferred.reject(error);
     });
 
@@ -115,7 +119,7 @@ function getReadyPRs(user, project) {
       }
       return memo;
     }, []);
-    return Promise.resolve(readyPrs);
+    return _lie2['default'].resolve(readyPrs);
   });
 }
 
@@ -125,7 +129,7 @@ function createPullRequest(user, project, options) {
   var deferred = (0, _utils.defer)();
 
   if (dry) {
-    return Promise.resolve({
+    return _lie2['default'].resolve({
       'html_url': '<GITHUB_PULL_REQUEST_URL>'
     });
   }

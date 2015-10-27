@@ -9,6 +9,10 @@ var _commander = require('commander');
 
 var _commander2 = _interopRequireDefault(_commander);
 
+var _lie = require('lie');
+
+var _lie2 = _interopRequireDefault(_lie);
+
 var _utils = require('./utils');
 
 var _github = require('./github');
@@ -49,7 +53,7 @@ var releaseNotes = '';
 })
 // get actual pr object
 .then(function (readyPrs) {
-  return Promise.all(readyPrs.map(function (pr) {
+  return _lie2['default'].all(readyPrs.map(function (pr) {
     return (0, _github.getPullRequest)(owner, project, pr.number);
   }));
 }).then(function (readyPrs) {
@@ -66,7 +70,7 @@ var releaseNotes = '';
   releaseNotes = readyPrs.map(function (pr) {
     return '* ' + (0, _utils.formatPR)(pr);
   }).join("\n");
-  return Promise.resolve(readyPrs);
+  return _lie2['default'].resolve(readyPrs);
 })
 // merge in pull requests
 .then(function (readyPrs) {

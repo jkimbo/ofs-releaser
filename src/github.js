@@ -1,4 +1,5 @@
 import GitHubApi from "github";
+import Promise from 'lie';
 
 import {
   defer,
